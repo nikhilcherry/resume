@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Nikhil A V: hackathon results, DriveLink, and selected projects.">
+<title>Nikhil A V</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --paper: #F6F8F7;
+    --ink: #14201B;
+    --muted: #56625C;
+    --rule: #D3DAD6;
+    --accent: #0B6B4C;
+    --marker: #F4E76E;
+    --marker-ink: #14201B;
+    --display: "Bricolage Grotesque", "Arial Narrow", Arial, sans-serif;
+    --body: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
+    --mono: "IBM Plex Mono", "Courier New", monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --paper: #0F1512; --ink: #E4EBE7; --muted: #99A69F;
+      --rule: #27322D; --accent: #5ED3A5; --marker: #5C5617; --marker-ink: #F7F1B8;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --paper: #0F1512; --ink: #E4EBE7; --muted: #99A69F;
+    --rule: #27322D; --accent: #5ED3A5; --marker: #5C5617; --marker-ink: #F7F1B8;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 16px/1.6 var(--body);
+    padding: 0 20px;
+  }
+  .sheet { max-width: 860px; margin: 0 auto; padding-block: 56px 72px; display: flex; flex-direction: column; gap: 56px; }
+  a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  a:hover { text-decoration-thickness: 2px; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
+  header { display: flex; flex-direction: column; gap: 18px; }
+  .where { font: 500 13px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  h1 { font: 800 clamp(48px, 9vw, 88px)/0.95 var(--display); letter-spacing: -0.03em; margin: 0; text-wrap: balance; }
+  .lede { font-size: 19px; line-height: 1.55; max-width: 62ch; margin: 0; }
+  .contact { display: flex; flex-wrap: wrap; gap: 8px 22px; font: 400 14px/1.4 var(--mono); }
+  .contact span { color: var(--muted); }
+
+  section { display: flex; flex-direction: column; gap: 18px; }
+  h2 {
+    font: 700 13px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+    margin: 0; padding-bottom: 12px; border-bottom: 1px solid var(--rule);
+    display: flex; justify-content: space-between; gap: 12px;
+  }
+  h2 small { font: inherit; letter-spacing: .04em; text-transform: none; }
+
+  .results { display: flex; flex-direction: column; }
+  .row {
+    display: grid; grid-template-columns: 92px 1fr auto; gap: 4px 24px; align-items: baseline;
+    padding: 16px 0; border-bottom: 1px solid var(--rule);
+  }
+  .pos { font: 800 30px/1 var(--display); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .pos.win span { background: var(--marker); color: var(--marker-ink); padding: 0 6px; margin-left: -6px; border-radius: 2px; }
+  .event { font-weight: 600; font-size: 17px; }
+  .event em { font-style: normal; font-weight: 400; color: var(--muted); }
+  .detail { grid-column: 2 / 4; color: var(--muted); font-size: 15px; }
+  .date { font: 400 13px/1.3 var(--mono); color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+  .projects { display: flex; flex-direction: column; gap: 34px; }
+  .project { display: grid; grid-template-columns: 200px 1fr; gap: 6px 28px; }
+  .project h3 { font: 700 24px/1.1 var(--display); margin: 0; letter-spacing: -0.01em; }
+  .project .role { font: 400 13px/1.4 var(--mono); color: var(--muted); margin-top: 6px; }
+  .project p { margin: 0 0 10px; max-width: 64ch; }
+  .project ul { margin: 0 0 12px; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; }
+  .stack { font: 400 13px/1.5 var(--mono); color: var(--muted); }
+  .figure { font-weight: 600; color: var(--ink); }
+
+  .tools { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 32px; }
+  .tool { padding: 14px 0; border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 2px; }
+  .tool a { font: 500 15px/1.3 var(--mono); }
+  .tool span { color: var(--muted); font-size: 15px; }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .skills { margin: 0; line-height: 1.8; }
+  .skills b { font-weight: 600; }
+  footer { font: 400 13px/1.5 var(--mono); color: var(--muted); border-top: 1px solid var(--rule); padding-top: 16px; }
+
+  @media (max-width: 640px) {
+    .sheet { gap: 44px; padding-block: 36px 56px; }
+    .row { grid-template-columns: 72px 1fr; }
+    .date { grid-column: 2; }
+    .detail { grid-column: 2; }
+    .pos { font-size: 24px; }
+    .project { grid-template-columns: 1fr; }
+    .tools, .two { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<main class="sheet">
+  <header>
+    <div class="where">Bengaluru · Computer Science, NMIT</div>
+    <h1>Nikhil A V</h1>
+    <p class="lede">I build systems that have to work in the real world: vehicle-to-vehicle networks, offline mesh radios, drone detection, and the developer tools I needed along the way. Co-founder of DriveLink, with six top finishes at hackathons in 2026.</p>
+    <div class="contact">
+      <div><span>mail </span>nikhil.ammisetty@gmail.com</div>
+      <a href="https://github.com/nikhilcherry">github.com/nikhilcherry</a>
+      <a href="https://www.linkedin.com/in/nikhil-a-v-406a1a292">linkedin.com/in/nikhil-a-v</a>
+      <a href="https://drivelink.tech">drivelink.tech</a>
+    </div>
+  </header>
+
+  <section aria-labelledby="results">
+    <h2 id="results">Results <small>2026</small></h2>
+    <div class="results">
+      <div class="row">
+        <div class="pos win"><span>1st</span></div>
+        <div class="event">Pariyavaran Hackathon <em>· MSRIT Bengaluru</em></div>
+        <div class="date">Sep 2026</div>
+        <div class="detail">Smart irrigation (PS 2.2): ESP32 field sensors with a FastAPI backend that decides when to water. ₹50,000 prize.</div>
+      </div>
+      <div class="row">
+        <div class="pos win"><span>1st</span></div>
+        <div class="event">ADHD Hacks <em>· Claude Community, Bengaluru</em></div>
+        <div class="date">Sep 2026</div>
+        <div class="detail">SOMA, a quiet web app for noticing what your body is feeling and naming the “parts” behind it: interactive body map, 3D body studio, FastAPI and vector search. Built with team Bubble Tea. $350 prize.</div>
+      </div>
+      <div class="row">
+        <div class="pos">AIR 5</div>
+        <div class="event">Blueprint <em>· eDC, IIT Delhi</em></div>
+        <div class="date">2026</div>
+        <div class="detail">DriveLink, pitched through the semi-final at MIT Bengaluru.</div>
+      </div>
+      <div class="row">
+        <div class="pos">4th</div>
+        <div class="event">HackSurgeX <em>· NMIT, 36 hours</em></div>
+        <div class="date">Apr 2026</div>
+        <div class="detail">DriveLink, with a patent grant option. I pitched to the judges.</div>
+      </div>
+      <div class="row">
+        <div class="pos">Top 5</div>
+        <div class="event">iQOO Hackathon</div>
+        <div class="date">Jun 2026</div>
+        <div class="detail">ChalkMark turns lecture audio and blackboard photos into notes, quizzes and flashcards, with Gemma 3n and Whisper running entirely on the phone.</div>
+      </div>
+      <div class="row">
+        <div class="pos">Top 10</div>
+        <div class="event">Google DeepMind Hackathon <em>· Bangalore</em></div>
+        <div class="date">Jul 2026</div>
+        <div class="detail">CHOWKI, an offline mesh network for mountain trail safety booths.</div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="work">
+    <h2 id="work">Selected work</h2>
+    <div class="projects">
+      <article class="project">
+        <div>
+          <h3>DriveLink</h3>
+          <div class="role">Co-founder · 2026</div>
+        </div>
+        <div>
+          <p>Vehicle-to-vehicle intelligence: cars that negotiate lane changes and merges with each other instead of guessing. Now being incorporated as DriveLink V2V Intelligence LLP.</p>
+          <ul>
+            <li>drivelink.tech runs a live V2V traffic simulation in the browser: car-following, negotiated lane changes, on-ramp merges.</li>
+            <li>RandomForest models decide when a car should merge, change lanes or wait. They drive a Godot highway sim live over WebSockets, and the same models are validated inside the SUMO traffic simulator.</li>
+            <li>DriveLink Connect: a Flutter app that lets anyone reach a car's owner by scanning a QR tag, without sharing phone numbers. Includes crash SOS.</li>
+          </ul>
+          <div class="stack">Next.js · Flutter · Supabase · Godot · scikit-learn · SUMO · WebSockets</div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div>
+          <h3>Arvyo</h3>
+          <div class="role">Bharatiya Antariksh Hackathon</div>
+        </div>
+        <div>
+          <p>When a star dims, something crossed it: a planet, an eclipsing binary, a blended background star, or a starspot. Arvyo rebuilds all four from physics, fits each to the TESS or Kepler light curve, and reports which one the evidence prefers, with the reason attached.</p>
+          <div class="stack">11 standalone repos · BLS/TLS period search · CNN encoder · pixel-level localisation · <a href="https://github.com/nikhilcherry/arvyo">source</a></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div>
+          <h3>assay</h3>
+          <div class="role">Hacker House Goa 2026</div>
+        </div>
+        <div>
+          <p>An agent that investigates fraud alerts on a TigerGraph transaction graph and writes a case file, with the graph query behind every claim. Its model is trained only on the bank's closed cases and tested on a month it never saw: <span class="figure">AUC 0.964</span> against the bank's own risk score at 0.866.</p>
+          <div class="stack">TigerGraph · GSQL · Python · <a href="https://nikhilcherry.github.io/assay/">replay</a> · <a href="https://github.com/nikhilcherry/assay">source</a></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div>
+          <h3>CHOWKI</h3>
+          <div class="role">Google DeepMind Hackathon</div>
+        </div>
+        <div>
+          <p>A delay-tolerant network for mountain trail booths with no internet and no signal. Hikers carry ledger snapshots between booths over Bluetooth, acting as data mules. A local Gemma model parses incident reports and flags overdue hikers.</p>
+          <div class="stack">Flutter · BLE · SQLite · Gemma via Ollama · TypeScript</div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div>
+          <h3>Drone detection</h3>
+          <div class="role">Computer vision</div>
+        </div>
+        <div>
+          <p>A YOLO11 drone detector I trained with an extra small-object detection head for distant targets. <span class="figure">0.915 mAP50</span> on validation and <span class="figure">131 FPS</span> inference. It is the camera channel of AURA, a high-altitude counter-drone prototype.</p>
+          <div class="stack">PyTorch · YOLO11 · CUDA</div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div>
+          <h3>flowtype</h3>
+          <div class="role">Offline voice typing</div>
+        </div>
+        <div>
+          <p>Press a hotkey, talk, and clean text appears at your cursor in any app. Speech recognition runs on the GPU with Whisper, a small local model removes filler words, and nothing leaves the laptop.</p>
+          <div class="stack">faster-whisper · Ollama · Linux, Wayland · <a href="https://github.com/nikhilcherry/VoiceChat">source</a></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div>
+          <h3>Friction Heatmap</h3>
+          <div class="role">Research project</div>
+        </div>
+        <div>
+          <p>A VS Code extension that measures which lines of code are hard to understand by watching how people hesitate: dwell time, revisits, pauses before editing. The question it tests: does human hesitation predict bugs better than code complexity metrics?</p>
+          <div class="stack">TypeScript · VS Code API · Python analysis</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="tools">
+    <h2 id="tools">Open source <small>all public on GitHub</small></h2>
+    <div class="tools">
+      <div class="tool"><a href="https://github.com/nikhilcherry/hoist">hoist</a><span>One command puts a local app on a public HTTPS URL, with a QR code.</span></div>
+      <div class="tool"><a href="https://github.com/nikhilcherry/replayr">replayr</a><span>Record HTTP, SSE and WebSocket traffic once, then demo with the backend off.</span></div>
+      <div class="tool"><a href="https://github.com/nikhilcherry/jitter">jitter</a><span>Finds which source of randomness makes a test flaky and prints a 10-out-of-10 repro.</span></div>
+      <div class="tool"><a href="https://github.com/nikhilcherry/strata">strata</a><span>Ranks risky files by complexity times git churn and finds hidden change coupling.</span></div>
+      <div class="tool"><a href="https://github.com/nikhilcherry/carve">carve</a><span>Shrinks a failing repo to the smallest set of lines that still fails the same way.</span></div>
+      <div class="tool"><a href="https://github.com/nikhilcherry/vein">vein</a><span>Records what Python code actually runs, and diffs two runs.</span></div>
+      <div class="tool"><a href="https://github.com/nikhilcherry/lever">lever</a><span>Gives any command-line tool a web UI by reading its --help.</span></div>
+      <div class="tool"><a href="https://github.com/nikhilcherry/cairn">cairn / roam</a><span>A Blender file becomes a walkable multiplayer web page at a URL, in one command.</span></div>
+      <div class="tool"><a href="https://github.com/nikhilcherry/sigil">sigil</a><span>Face photo to live social search to a tamper-evident record on a blockchain.</span></div>
+      <div class="tool"><a href="https://github.com/nikhilcherry/prism-lab">prism-lab</a><span>Claude agents form hypotheses about a room, measure it with laptop sensors, and try to disprove each other.</span></div>
+      <div class="tool"><a href="https://github.com/nikhilcherry/Indian-stock-MCP">Indian-stock-MCP</a><span>NSE and BSE prices, history and market news as tools for AI assistants.</span></div>
+      <div class="tool"><a href="https://github.com/nikhilcherry/sih-antidrone">aura</a><span>Counter-drone prototype with an altitude-compensated tracking model.</span></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="skills">
+    <h2 id="skills">Skills and education</h2>
+    <div class="two">
+      <p class="skills">
+        <b>Focus:</b> AI agent orchestration, edge AI on embedded hardware, delay-tolerant mesh networking, ultrasonic acoustic sensing, computer vision.<br>
+        <b>Languages:</b> Python, TypeScript, Dart, C++, R.<br>
+        <b>Tools:</b> PyTorch, Flutter, Next.js, FastAPI, Supabase, TigerGraph, n8n, Ollama, MCP, ESP32, Blender, Linux, Docker.
+      </p>
+      <p class="skills">
+        <b>B.E., Computer Science and Engineering</b><br>
+        Nitte Meenakshi Institute of Technology, Bengaluru
+      </p>
+    </div>
+  </section>
+
+  <footer>Nikhil A V · Bengaluru · last updated September 2026</footer>
+</main>
+</body>
+</html>
